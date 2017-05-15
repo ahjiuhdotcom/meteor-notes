@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema'; // for validation in custorm Meteor methods
 import { Accounts } from 'meteor/accounts-base';
 
-Accounts.validateNewUser((user) => {
+export const validateNewUser = (user) => {
   const email = user.emails[0].address;
 
   // try-catch block is required so that meteor err can be thrown if anything goes wrong
@@ -19,4 +19,10 @@ Accounts.validateNewUser((user) => {
   //   throw new Meteor.Error(400, e.message);
   // }
   return true
-});
+}
+
+if (Meteor.isServer) {
+  // 'Accounts.validateNewUser()' only available on server
+  // This function automatic get called when new user about to create
+  Accounts.validateNewUser(validateNewUser);
+}
