@@ -22,6 +22,6 @@ if (Meteor.isClient) {
       const wrapper = mount(<NoteListItem note={{title, updatedAt}} />);
 
       expect(wrapper.find('h5').text()).toBe('Untitled note');
-    })
+    });
   });
 }
