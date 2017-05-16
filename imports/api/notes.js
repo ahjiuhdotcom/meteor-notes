@@ -43,15 +43,17 @@ Meteor.methods({
 
     return Notes.remove({ _id, userId: this.userId });
   },
+  // 'updates' is an object
   'notes.update'(_id, updates) {
     if(!this.userId) {
       throw new Meteor.Error('not-authorized');
     }
 
     try {
-      // Not only update '_id', 'title', 'body',
+      // Not only validate '_id', 'title', 'body',
       // but also validate if there is any extra malicious argument pass in
       // that's why using spread operator '...updates' in validation
+      // '...updates': title, body, xxx, yyy etc malicious argument
       new SimpleSchema({
         _id: {
           type: String,
