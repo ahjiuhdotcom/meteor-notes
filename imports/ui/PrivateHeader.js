@@ -35,8 +35,8 @@ export default createContainer(() => {
   return {
     // we use the first style because Accounts.logout didn't require any argument
     // to make it consistent with Login.js and Signup.js, we use 2nd style here
-    // handleLogout: () => Accounts.logout() or
-    handleLogout: Accounts.logout
+    handleLogout: () => Accounts.logout()
+    // handleLogout: Accounts.logout // this one not working
   };
 }, PrivateHeader);
 
