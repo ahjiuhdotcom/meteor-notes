@@ -33,7 +33,11 @@ export default createContainer(() => {
 
   return {
     // find all the notes in the subscriptions
-    notes: Notes.find().fetch().map((note) => {
+    notes: Notes.find({}, {
+      sort: {
+        updatedAt: -1
+      }
+    }).fetch().map((note) => {
       return {
         ...note,
         selected: note._id === selectedNoteId // return true or false here
