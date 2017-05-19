@@ -1,18 +1,73 @@
+/*
+// Demonstrate how mixin works
+@mixin funkyBorder($borderSize: 10px, $borderColor: orange) {
+  border: $borderSize solid $borderColor;
+
+  * {
+    // color: red;
+    @content;
+  }
+}
+*/
+
+/*
+// transfer to new file
+@mixin desktop () {
+  @media (min-width: 50rem) {
+    @content
+  }
+}
+*/
+
 .page-content {
   display: flex;
   height: $page-content-height;
   margin: 0 auto;
   max-width: $site-max-width;
-  padding: $large-space $space;
+
+  // @media (min-width: 50rem) {
+  @include desktop {
+    padding: $large-space $space;
+  }
 }
 
 .page-content__sidebar {
-  display: flex;
+  display: none;
   padding-right: $large-space;
   width: $page-content-sidebar-width;
+
+
+  // @media (min-width: 50rem) {
+  @include desktop {
+    display: flex;
+  }
 }
+
+/*
+@media (min-width: 50rem) {
+  .page-content__sidebar {
+    display: flex;
+  }
+}
+*/
 
 .page-content__main {
   display: flex;
-  width: $page-content-main-width;
+  width: 100%;
+
+  // @media (min-width: 50rem) {
+  @include desktop {
+    width: $page-content-main-width;
+
+    /*
+    // Demonstrate how mixin works
+    // @include funkyBorder();
+    // or
+    @include funkyBorder(20px, purple) {
+      // everything define here will take its effect
+      // at @content of funkyBorder function
+      color: green;
+    };
+    */
+  }
 }
