@@ -10,6 +10,7 @@ import NoteListItem from './NoteListItem';
 import NoteListEmptyItem from './NoteListEmptyItem';
 
 export const NoteList = (props) => {
+
   return (
     <div className="item-list">
       <NoteListHeader/>
@@ -17,7 +18,6 @@ export const NoteList = (props) => {
       {props.notes.map((note) => {
         return <NoteListItem key={note._id} note={note}/>;
       })}
-      NoteList {props.notes.length}
     </div>
   );
 };
