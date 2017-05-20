@@ -23,6 +23,7 @@
   outline: none;
   padding: $input-spacing;
   resize: none;
+  -webkit-overflow-scrolling: touch; // momentum scrolling
 }
 
 .editor__message {
