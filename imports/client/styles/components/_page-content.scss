@@ -32,15 +32,28 @@
 }
 
 .page-content__sidebar {
-  display: none;
-  padding-right: $large-space;
-  width: $page-content-sidebar-width;
+  display: flex;
+  transition: left .3s ease;
+  width: 100vw;
 
+  position: fixed;
+  top: $header-height;
+  left: -100vw;
+  // right: 0;
+  bottom: 0;
 
   // @media (min-width: 50rem) {
   @include desktop {
     display: flex;
+    padding-right: $large-space;
+    position: static;
+    width: $page-content-sidebar-width;
   }
+}
+
+.is-nav-open .page-content__sidebar {
+  left: 0;
+  // display: block;
 }
 
 /*
